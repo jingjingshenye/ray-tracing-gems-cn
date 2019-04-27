@@ -24,10 +24,10 @@ https://github.com/vinjn/ray-tracing-gems-cn/projects
 - [x] `YanFeiGao` / `papalqi` 2. What is a Ray? by Peter Shirley, Ingo Wald, Tomas Akenine-Möller, and Eric Haines
 - [x] `jingjingshenye` 3. Introduction to DirectX Raytracing, by Chris Wyman and Adam Marrs
 - [x] `Nicholas10128` 4. A Planetarium Dome Master Camera, by John E. Stone
-- [x] `editazhu` 5. Computing Minima and Maxima of Subarrays, by Ingo Wald
+- [x]  5. Computing Minima and Maxima of Subarrays, by Ingo Wald
 
 ## PART 2: INTERSECTIONS AND EFFICIENCY, editor: Ingo Wald
-- [x] `haiyuem` 6. A Fast and Robust Method for Avoiding Self-Intersection, by Carsten Wächter and Nikolaus Binder
+- [x] `haiyuem` / `liyongnupt` 6. A Fast and Robust Method for Avoiding Self-Intersection, by Carsten Wächter and Nikolaus Binder
 - [x] `AmesingFlank` 7. Precision Improvements for Ray/Sphere Intersection, by Eric Haines, Johannes Günther, and Tomas Akenine-Möller
 - [x] `wubochang` 8. Cool Patches: A Geometric Approach to Ray/Bilinear Patch Intersections, by Alexander Reshetov
 - [x] `lifangjie` 9. Multi-Hit Ray Tracing in DXR, by Christiaan Gribble
@@ -42,7 +42,7 @@ https://github.com/vinjn/ray-tracing-gems-cn/projects
 PART 4: SAMPLING, editor: Alexander Keller
 =
 - [x] `papalqi` 15. On the Importance of Sampling, by Matt Pharr
-- [x] `FancyVin` 16. Sample Transformations Zoo, by Peter Shirley, Samuli Laine, David Hart, Matt Pharr, Petrik Clarberg, Eric Haines, Matthias Raab, and David Cline
+- [x] `FancyVin` / `FaithZL` 16. Sample Transformations Zoo, by Peter Shirley, Samuli Laine, David Hart, Matt Pharr, Petrik Clarberg, Eric Haines, Matthias Raab, and David Cline
 - [x] `Angiewei` / `slongle` 17. Ignoring the Inconvenient When Tracing Rays, by Matt Pharr
 - [x] `slongle` 18. Importance Sampling of Many Lights on the GPU, by Pierre Moreau and Petrik Clarberg
 
@@ -55,7 +55,7 @@ PART 4: SAMPLING, editor: Alexander Keller
 ## PART 6: HYBRID APPROACHES AND SYSTEMS, editor: Morgan McGuire
 - [x] `quicklyslow` 23. Interactive Light Map and Irradiance Volume Preview in Frostbite, by Diede Apers, Petter Edblom, Charles de Rousiers, and Sébastien Hillaire
 - [x] `tavechiang` 24. Real-Time Global Illumination with Photon Mapping, by Niklas Smal and Maksim Aizenshtein
-- [x] `tankiJong` 25. Hybrid Rendering for Real-Time Ray Tracing, by Colin Barré-Brisebois, Henrik Halén, Graham Wihlidal, Andrew Lauritzen, Jasper Bekkers, Tomasz Stachowiak, and Johan Andersson
+- [x] `tankiJong` / `rockyvon` 25. Hybrid Rendering for Real-Time Ray Tracing, by Colin Barré-Brisebois, Henrik Halén, Graham Wihlidal, Andrew Lauritzen, Jasper Bekkers, Tomasz Stachowiak, and Johan Andersson
 - [x] `tankiJong` 26. Deferred Hybrid Path Tracing, by Thomas Schander, Clemens Musterle, and Stephan Bergmann
 - [x] `zhxx1987` 27. Interactive Ray Tracing Techniques for High-Fidelity Scientific Visualization, by John E. Stone
 
