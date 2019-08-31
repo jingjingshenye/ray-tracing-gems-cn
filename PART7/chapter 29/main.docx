@@ -1,0 +1,178 @@
+第29章
+光线追踪渲染器里的高效粒子体积分割
+Aaron Knoll, R. Keith Morley, Ingo Wald, Nick Leaf, and Peter Messmer
+NVIDIA
+
+摘要
+粒子数据的渲染是游戏、电影、科学可视化等很多领域的一个常见的问题。这项技术传统上可以通过基于格栅化的分割方法来实现。它根据问题的体积进行线性地缩放。假设足够的低消耗光线以log复杂度运动，在光线追踪框架中的分割可以更好地扩大到大型的集合体。在这一章节，我们提供了一个能够高效率地渲染大型粒子数据的方法。用于研究光线的相关度以及在带RT Cores科技的NVIDIA RTX 2080 Ti (Turing) GPU架构上最大化硬件加速。
+
+29.1 目标
+当大多数图元有次像素的footprint以及需要进行深度排序时，基于格栅化的GPU分割方法基本就罢工了。会发生这个问题是由于深度排序的片段的线性消耗，还有不相关的帧缓冲的堵塞，以及实际中对于超过2千万的粒子数交互性能会受到阻碍（取决于GPU）。其实有大量的解决办法达到更快的格栅化性能，包括依赖视角的空间细分，LOD细节层次关闭深度测试和透明度混合，或者重新在代理上采样，比如纹理切片。然而针对所有上述方法，在渲染足够大数量的粒子时性能都会遭受影响。
+
+大家可以光线追踪架构来有效地纵览和渲染完整的粒子数据。纵览一个加速结构通常有一个对数时间复杂度。而且，它可以通过小而本地的图元排序来完成，而不是一个单一的大型排序。通过这个手段，我们希望性能反映的是图元与每束光相交的的数量，而不是总体场景的复杂程度。还有其他的原因针对在光线追踪架构内渲染粒子数据，比如允许高效地渲染带反射的粒子效果。投射到大量透明物体的光线产生了自身的挑战，这个章节提供了一个问题解决方案。它尤其适合来自N-body和类似仿真的大型空间粒子数据的可视化，比如图29-1所示的DarkSky太空数据集。它同样可以用于分子、材料、流体动力仿真和游戏电影里潜在的更大型粒子效果。
+
+图29-1 一个1千万的粒子集合，展现DarSky N-body太空重力的仿真，在英伟达RTX 2080Ti带RT Cores技术的显卡上渲染，35帧/秒（1080P）或14帧/秒(4K)，无细节层次。
+
+29.2 算法
+我们的目标是用光线追踪运动来创建一个可缩放的模拟来基于格栅化的的广告牌分割（参见 Westover的作品[7]）。 它的核心理念是沿着视角射线对每个粒子靠近其中心点采样，然后沿着射线融合到按深度排序的采样集合。
+我们的图元是一个放射基础方程(RBF)，含有一个半径r，粒子中心P和边界。边界是通过2r宽度围绕粒子中心的bounding box来定义的。采样点(交叉碰撞)X由沿着原点为O和方向为d的光线到粒子P中心的距离计算得出。
+		X = O + ||P – O|| d
+我们然后估算一个在这一采样点的高斯放射基础函数，
+(X) = e
+这个图元测试发生在物体空间，在三维boundingbox里对RBF采样，这个不同于格栅化分割里的二维的广告牌。这在放大到粒子中心时，生成了更连续的结果。而且不需要把加速结构对摄影机对齐的广告牌几何体进行重新调整。
+然后，沿着每束光线的深度排序采样的集合{}都通过以下的表达式[3]进行合并，
+C = (1-a)
+在此，一个采样a的透明度和颜色c和当前的通过转换函数投射的采样挂钩，f和b分别表示blending操作前面和后面的值。
+
+29.3 实现
+我们目前的挑战是高效地在光线追踪架构里遍历和排序尽可能多的粒子。我们选择了NVIDIA OptiX SDK[4]，它适合在Linux下运行的科学可视化和高性能运算应用。尽管更多的内存效率方法会有益处，对于这个案例我们采用一个普通的16字节[浮点数4]图元，配以光线追踪API支持的默认的加速结构和遍历机制。
+这个方法可以在OptiX[4]closest-hit程序里直接执行，给每个粒子碰撞发出第一个基础光线和第二个传输光线直到终止。然而，这回生成大量的不相关光线，导致性能的低下。
+我们因此用一个手段能尽可能减少相关的遍历和交叉体积的次区域，如图29-2所示。这个与RBF体积方法[2]有些类似，还类似重新采样到正常空间化的二位材质切片的游戏粒子效果。但是它确实更简单而且更brute-force，假设有一个足够大的缓冲来防止溢出，它会认真地重建每个交叉的粒子。我们在29.3.2讨论了OptiX里用任意碰撞程序实现了这个功能。
+
+
+图29.2 我们的算法概览。几何图元是一个球状的放射基础方程处于一个点。碰撞的位置是沿着观察光线估算的到粒子中心的距离。为了保证这个集合体遍历相关的行为，我们把体积沿着光线分割成多个片段，变成了条状。然后我们在每个长条里遍历和排序交叉的粒子集合。
+
+
+29.3.1 光线生成程序
+我们的方法施行如下：我们交叉体积的boundingbox然后把结果间隔分割成长条，通过slab_spacing来隔开。对于每一个长条，我们定义ray.tmin和ray.tmax来恰当的裁切加速架构的遍历。我们然后用rtTrace() 来遍历，它通过长条里碰撞的采样在PerRayData填充了缓冲。我们接连在缓冲里排序和合并列表。下面的伪代码省略了一些细节{估算放射基础函数和使用转换函数}；完整的代码请参考附带的资源(29.5)
+
+1 struct ParticleSample {
+2 float t;
+3 uint id;
+4 };
+5
+6 const int PARTICLE_BUFFER_SIZE = 31; // 31 for Turing, 255 for Volta
+7
+8 struct PerRayData {
+9 int tail; // End index of the array
+10 int pad;
+11 ParticleSample particles[PARTICLE_BUFFER_SIZE]; // Array
+12 };
+13
+14 rtDeclareVariable(rtObject, top_object, , );
+15 rtDeclareVariable(float, radius, , );
+16 rtDeclareVariable(float3, volume_bbox_min, , );
+17 rtDeclareVariable(float3, volume_bbox_max, , );
+18 rtBuffer<uchar4, 2> output_buffer;
+19
+20 RT_PROGRAM raygen_program()
+21 {
+22 optix::Ray ray;
+23 PerRayData prd;
+24
+25 generate_ray(launch_index, camera); // Pinhole camera or similar
+26 optix::Aabb aabb(volume_bbox_min, volume_bbox_max);
+27
+28 float tenter, texit;
+29 intersect_Aabb(ray, aabb, tenter, texit);
+30
+31 float3 result_color = make_float3(0.f);
+32 float result_alpha = 0.f;
+33
+34 if (tenter < texit)
+35 {
+36 const float slab_spacing =
+37 PARTICLE_BUFFER_SIZE * particlesPerSlab * radius;
+38 float tslab = 0.f;
+39
+40 while (tslab < texit && result_alpha < 0.97f)
+41 {
+42 prd.tail = 0;
+43 ray.tmin = fmaxf(tenter, tslab);
+44 ray.tmax = fminf(texit, tslab + slabWidth);
+45
+46 if (ray. tmax > tenter)
+47 {
+48 rtTrace(top_object, ray, prd);
+49
+50 sort(prd.particles, prd.tail);
+51
+52 // Integrate depth-sorted list of particles.
+53 for (int i=0; i< prd.tail; i++) {
+54 float drbf = evaluate_rbf(prd.particles[i]);
+55 float4 color_sample = transfer_function(drbf); // return RGBA
+56 float alpha_1msa = color_sample.w * (1.0 - result_alpha);
+57 result_color += alpha_1msa * make_float3(
+58 color_sample.x, color_sample.y, color_sample.z);
+59 result_alpha += alpha_1msa;
+60 }
+61 }
+62 tslab += slab_spacing;
+63 }
+64 }
+65
+66 output_buffer[launch_index] = make_color( result_color ));
+67 }
+
+
+29.3.2 交叉和任意触碰程序
+即使和光线/球体交叉比较，交叉程序依然很简单：我们把沿着观察光线到例子中心的距离作为触碰点sample_pos。然后我们检查采样是否在RBF半径内；如果是，我们报出一次交叉。我们的任意触碰程序然后把交叉的粒子附到缓冲里，它在长条遍历完成时通过光线生成程序来排序。
+1 rtDeclareVariable(ParticleSample,hit_particle,attribute hit_particle,);
+2
+3 RT_PROGRAM void particle_intersect( int primIdx )
+4 {
+5 const float3 center = make_float3(particles_buffer[primIdx]);
+6 const float t = length(center - ray.origin);
+7 const float3 sample_pos = ray.origin + ray.direction * t;
+8 const float3 offset = center - sample_pos;
+9 if ( dot(offset, offset) < radius * radius &&
+10 rtPotentialIntersection(t) )
+11 {
+12 hit_particle.t = t;
+13 hit_particle.id = primIdx;
+14 rtReportIntersection( 0 );
+15 }
+16 }
+17
+18 RT_PROGRAM void any_hit()
+19 {
+20 if (prd.tail < PARTICLE_BUFFER_SIZE) {
+21 prd.particles[prd.tail++] = hit_particle;
+22 rtIgnoreIntersection();
+23 }
+24 }
+
+29.3.3  排序和优化
+PARTICLE_BUFFER_SIZE的选择和后续的理想排序算法取决于理想中的rtTrace()的性能。在带有专用遍历硬件的NVIDIA Turing架构上，我们用体积为31的阵列和冒泡排序达到了最佳性能。对于小规模的阵列这并不令人惊奇。而且那些元素已经被部分地通过边界体积等级遍历排序了。在例如Volta这种带有软件遍历的架构上，我们体验了一个255大型阵列的最佳结果。它有相对较少的长条（以及遍历）和bitonic排序。它们都在我们的参考代码中实现了。
+particlesPerSlab的值应该基于理想的半径和粒子重叠程度仔细地选择；在我们的太空采样我们默认为16。对于更大的半径值，粒子可能重叠，因此更大的PARTICLE_BUFFER_SIZE需要更正。
+
+29.4  结果
+我们的技术在NVIDIA RTX 2080 Ti(Turing)和Titan V(Volta)架构的性能可见表29-1，可以通过填充屏幕的视角看到1080p(200万像素)和4k(8百万像素)下的DarkSky数据集。Turing架构下的RT Cores科技的性能至少比Volta快三倍，在较小场景下近乎快6倍。
+
+表29-1 毫秒单位内的性能
+
+
+我们发现在Turing上，我们基于长条的方法大致比29.2里提到的原生最近触碰方法快了三倍，以及在Volta快6至10倍。我们对基于插入排序的方法进行了实验，它的好处是不会超越固定大小的缓冲；这个曾经大概比长条方法在Turing和Volta上慢2至2.5倍。最后，我们用了一个格栅化分割对比了性能。我们发现我们的光线追踪方法对于100兆的粒子数据集快了7倍，测试都是在NVIDIA RTX 2080Ti上使用4k和1080普渡分辨率，配以类似的摄影机和半径。
+
+29.5  总结
+在这一章节，我们阐述了一个方法来高效地在Turing和未来NVIDIA RTX架构上的冲击，以此来增强硬件光线的遍历。尽管用了自定义的图元，我们的方法比在Volta上快了三倍，比原生最近触碰方法快了约三倍，比带有深度排序基于格栅化的冲击方法快了一个数量级。它使实时渲染1000万个带有完整深度排序和混合得以实现，而且不需要细节等级。
+我们的方法主要用于来自科学可视化的空间粒子数据，但是可以很容易地应用到其他粒子数据。当粒子明显地重叠时，完整的RBF体积渲染或者重新采样到代理几何体上或结构体积，可能会更能凸显优势。
+我们把代码做成了开源，放在了OptiX Advanced Samples Github库中: https://github.com/nvpro-samples/optix_advanced_samples.
+
+参考
+[1] Green, S. Volumetric Particle Shadows. NVIDIA Developer Zone, https://developer.
+download.nvidia.com/assets/cuda/files/smokeParticles.pdf, 2008.
+[2] Knoll, A., Wald, I., Navratil, P., Bowen, A., Reda, K., Papka, M. E., and Gaither, K. RBF Volume Ray
+Casting on Multicore and Manycore CPUs. Computer Graphics Forum 33, 3 (2014), 71–80.
+[3] Levoy, M. Display of Surfaces from Volume Data. IEEE Computer Graphics and Applications, 3
+(1988), 29–30.
+[4] Parker, S. G., Bigler, J., Dietrich, A., Friedrich, H., Hoberock, J., Luebke, D., McAllister, D.,
+McGuire, M., Morley, K., Robison, A., et al. OptiX: A General Purpose Ray Tracing Engine. ACM
+Transactions on Graphics 29, 4 (2010), 66:1–66:13.
+[5] Preston, A., Ghods, R., Xie, J., Sauer, F., Leaf, N., Ma, K.-L., Rangel, E., Kovacs, E., Heitmann,
+K., and Habib, S. An Integrated Visualization System for Interactive Analysis of Large,
+Heterogeneous Cosmology Data. In Pacific Visualization Symposium (2016), pp. 48–55.
+[6] Skillman, S. W., Warren, M. S., Turk, M. J., Wechsler, R. H., Holz, D. E., and Sutter, P. M. Dark Sky
+Simulations: Early Data Release. arXiv, https://arxiv.org/abs/1407.2600, July 2014.
+[7] Westover, L. Footprint Evaluation for Volume Rendering. Computer Graphics (SIGGRAPH) 24, 4
+(1990), 367–376.
+Open Access This chapter is licensed under the terms of the Creative Commons Attribution-
+NonCommercial-NoDerivatives 4.0 International License (http://creativecommons.org/
+licenses/by-nc-nd/4.0/), which permits any noncommercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the
+source, provide a link to the Creative Commons license and indicate if you modified the licensed material. You do
+not have permission under this license to share adapted material derived from this chapter or parts of it.
+The images or other third party material in this chapter are included in the chapter's Creative Commons license,
+unless indicated otherwise in a credit line to the material. If material is not included in the chapter's Creative
+Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you
+will need to obtain permission directly from the copyright holder.，
