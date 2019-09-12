@@ -1,0 +1,259 @@
+# 撰稿者
+
+Maksim Aizenshtein是NVIDIA赫尔辛基的一名高级系统软件工程师。他目前的工作和研究主题是实时光线追踪以及现代渲染引擎的设计。早先，他在UL Benchmarks负责3DMark团队。在他的带领下，团队使用DirectX Raytracing API让3DMark实现了对光线追踪的支持，同时，他们还为实时光线追踪推出了全新的渲染技术。另外，他带领部门开发了许多基准测试软件，这些软件由UL Benchmarks发行。更早之前，他任职于Biosense-Webster，负责基于GPU渲染的全新医疗影像系统。Maksim在2011年获得了以色列理工学院计算机科学专业的学士学位。
+
+
+
+Tomas Akenine-Möller在2016年加入NVIDIA瑞典，目前是公司的一名杰出科学家。他刚从隆德大学计算机图形学教授的职位上退休。Tomas是《Real-Time Rendering》和《Immersive Linear Algebra》两本书的合著者，另外，他曾发表了100多篇学术论文。在此之前，他曾先后就职于Ericsson Research和Intel。
+
+
+
+Johan Andersson是Embark的CTO，致力于探索具有创新潜力的新技术。在过去的18年中，他曾先后在SEED、DICE和Electronic Arts任职，主要研究渲染、性能以及内核引擎系统，并且还是Frostbite游戏引擎的架构师。Johan是多个行业和硬件顾问委员会的成员，经常在GDC、SIGGRAPH及其它相关会议中出席，探讨关于渲染、性能、游戏引擎设计以及GPU架构等主题。
+
+
+
+Magnus Andersson在2016年加入NVIDIA，是一名高级软件开发者，他专注于光线追踪领域。他先后在2008年和2015年获得了隆德大学计算机科学与工程的硕士学位和计算机图形学的博士学位。在读博期间，他得到了Intel的资助。他的研究方向包括随机光栅化技术和遮挡剔除。
+
+
+
+Dietger van Antwerpen是NVIDIA柏林的一名高级图形软件工程师。他的毕业论文研究方向是基于物理的GPU渲染。从2012年开始，他一直在NVIDIA从事专业GPU渲染器的相关工作。他擅长的领域是基于物理的光传输模拟和并行计算。Dietger为NVIDIA Iray光线传输模拟、渲染系统以及NVIDIA OptiX光线追踪引擎等方面做出了贡献。
+
+
+
+Diede Apers是Frostbite斯德哥尔摩的一名渲染工程师。他在2016年获得了布雷达应用科技大学游戏技术专业的硕士学位。在此之前，他在Larian Studios实习，同时还在豪斯特应用科技大学学习数字艺术与娱乐专业。
+
+
+
+Colin Barré-Brisebois是SEED的一名高级渲染工程师，他所在的是Electronic Arts旗下主攻未来前沿技术和创新性实验的跨学科团队。在此之前，他在WB Games Montreal曾担任过电影Batman Arkham的技术总监和首席渲染工程师。他带领渲染团队，同时负责对图形技术的创新。在WB Games之前，他是Electronic Arts多款游戏的渲染工程师，游戏包括Battlefield 3、Need For Speed、Army of TWO和Medal of Honor。他还经常出席专业会议（如GDC、SIGGRAPH、HPG、I3D等），并在GPU Pro系列书籍、ACM以及自己的博客上有过出版和发表。
+
+
+
+Jasper Bekkers是SEED的一名渲染工程师，他所在的是Electronic Arts旗下专门研究未来前沿技术和创新性实验的跨学科团队。在此之前，他曾是OTOY的一名渲染工程师，为Brigade和Octane路径追踪器带来了顶尖的渲染技术。在更早的时候，他是Frostbite斯德哥尔摩的一名渲染工程师，参与过Mirror’s Edge、FIFA、Dragon Age以及Battlefield系列等游戏项目。
+
+
+
+Stephan Bergmann是Enscape的一名渲染工程师，公司位于德国的卡尔斯鲁厄。他目前还是卡尔斯鲁厄理工学院（KIT）计算机科学专业计算机图形学方向的在读博士生。他在2018年加入Enscape。在此之前，他曾在KIT工作过。他的研究主题包括工业应用的传感器真实图像合成技术和基于图像的渲染技术。2006年，他从KIT毕业，所学专业是计算机科学。从2000年开始，他已经是一名软件和视觉计算工程师，在消费电子及汽车工业领域曾担任过不同职位。
+
+
+
+Nikolaus Binder是NVIDIA的一名高级研究员。在加入NVIDIA之前，他获得了德国乌尔姆大学计算机科学专业的硕士学位，随后在Mental Images担任研究顾问一职。他的学术研究、出版物和演讲方向主要集中在拟蒙特卡洛方法（quasi-Monte Carlo methods）、照片级真实度的图像合成、光线追踪以及基于基础数学和算法结构的渲染算法。
+
+
+
+Jiri Bittner是捷克科技大学计算机图形与交互技术学院的一名副教授，该大学位于布拉格。他在2003年获得了该系的博士学位。他曾在维也纳工业大学做过几年的研究员。他的研究领域主要涉及可视化计算、实时渲染、空间数据结构以及全局光照。他参与了众多国内外研究项目和一些关于复杂场景实时渲染的商业项目。
+
+
+
+Jakub Boksansky是一名捷克科技大学计算机图形及交互技术学院的科研人员，该大学位于布拉格。2013年，他获得了该校计算机科学专业的硕士学位。Jakub曾使用Flash开发过几款基于web的电脑游戏，从此，他对计算机图形学产生了兴趣。之后，他为Unity引擎定制开发了一些图像特效套件。他的研究主要涉及光线追踪和高级实时渲染技术，比如高效阴影计算和图像空间特效。
+
+
+
+Juan Cañada是Epic Games的首席工程师，他带领团队为Unreal引擎开发追踪算法。在此之前，Juan是Next Limit Technologies可视化部门（Visualization Division）的主管。他在那里带领Maxwell Render团队超过10年之久。他还是IE商学院的一名数据可视化及大数据课程的教师。
+
+
+
+Petrik Clarberg从2016年起在NVIDIA担任高级研究员一职。他拓宽了实时渲染的领域。他的研究领域主要包括基于物理的渲染、采样和着色、以及硬件API新功能的开发。早在2008年，Petrik是Intel的一名科研人员。同时，他还和别人共同创办了一家专注于图形技术创业公司。早在20世纪90年代，他曾参与了一个场景展示的项目，从此开始对图形学产生了浓厚兴趣，并且一路探究。之后，他获得了隆德大学计算机科学专业的博士学位。
+
+
+
+David Cline在2007年获得了杨百翰大学计算机科学专业的博士学位。毕业之后，他在亚利桑那州立大学担任博士后学者。随后，他在俄克拉荷马州立大学担任助理教授，一直做到2018年。他目前是NVIDIA的一名软件开发人员，在位于盐湖城的实时光线追踪团队工作。
+
+
+
+Alejandro Conty Estevez是Sony Pictures Imageworks的一名高级渲染工程师，他在2009年加入了该公司，已经开发了多款基于物理渲染的组件，比如BSDF、光照以及积分算法，算法包括双向路径追踪（Bidirectional Path Tracing）和其它混合技术。在此之前，他创建了YafaRay，并且是主要开发者，YafaRay是2003年左右发布的一款开源渲染引擎。2004年，他获得了西班牙奥维耶多大学计算机科学专业的硕士学位。
+
+
+
+Petter Edblom是Electronic Arts公司Frostbite渲染团队的一名软件工程师。早先，他在DICE工作室参与过几款游戏的开发，包括Star Wars Battlefront 1和2、Battlefield 4和5。他拥有于默奥大学计算机科学专业的硕士学位。
+
+
+
+Christiaan Gribble是SURVICE Engineering公司Applied Technology Operation团队的一名首席科学家，同时还是该公司高性能计算团队的主管。他的研究开拓了交互式可视化与高性能计算这两个领域的融合，研究主要集中在算法、架构以及预测渲染（predictive rendering）和可视化仿真系统。在2012年加入SURVICE之前，Gribble曾担任格罗夫城市学院计算机系的副教授。他在2000年获得了格罗夫城市学院数学专业的学士学位，在2002年获得了卡内基·梅隆大学信息网络专业的硕士学位，在2006年获得了犹他大学计算机科学专业的博士学位。
+
+
+
+Holger Gruen在25年前开发过软件光栅化渲染器，从此开始了三维实时图形方向的职业生涯。他曾先后在游戏中间件、游戏开发、军事模拟器、GPU硬件供应商等相关公司任职过。他目前和NVIDIA欧洲开发者技术团队一起工作，帮助开发者充分利用NVIDIA GPU性能。
+
+
+
+Johannes Günther是Intel的一名高级图形软件开发工程师。他的工作集中在高性能、基于可视化库的光线追踪等方面。在加入Intel之前，Johannes是Dassault Systèmes的3DEXCITE团队的一名高级研究员和软件架构师。他拥有萨尔大学计算机科学专业的博士学位。
+
+
+
+Eric Haines目前就职于NVIDIA，主要研究的是交互式光线追踪。他是《Real-Time Rendering》和《An Introduction to Ray Tracing》的合著者。他编写了《The Ray Tracing News》，和别人共同撰写了《Journal of Graphics Tools》以及《Journal of Computer Graphics Techniques》。他还在Udacity慕课平台上创立和主讲了《Interactive 3D Graphics》课程。
+
+
+
+Henrik Halén是SEED的一名高级渲染工程师。他所在的是一个跨学科团队，为Electronic Arts主攻尖端技术和创新性实验。在SEED之前，他是Microsoft的一名高级渲染工程师，为游戏Gears of War开发顶级的渲染技术。在Microsoft之前，他曾是Electronic Arts洛杉矶工作室和斯德哥尔摩DICE的一名渲染工程师，参与了Mirror’s Edge、Medal of Honor以及Battlefield系列等游戏的开发。他还曾出席过GDC、SIGGRAPH以及Microsoft Gamefest等各大会议。
+
+
+
+David Hart是NVIDIA OptiX团队的一名工程师。他拥有康奈尔大学计算机图形专业的硕士学位，并在DreamWorks和Disney制作CG电影和游戏超过15年。在加入NVIDIA之前，David曾创办过公司，制作了多人在线WebGL白板的项目，而后又出售了这家公司。他拥有数字毛发造型技术的相关专利，并在业余期间使用人工进化技术进行数字艺术的创作。David的目标是用计算机制作精美的照片，并在此过程中创造出卓越的工具。
+
+
+
+Sébastien Hillaire是Electronic Arts Frostbite引擎团队的一名渲染工程师。你可以看到他在许多领域中为视觉质量和性能的提升所做出的贡献，就举几个例子，比如基于物理的着色、体积模拟以及渲染、视觉特效、后处理等等。他在2010年获得了法国国家应用科学研究所计算机科学专业的博士学位，在这期间，他主要研究视线追踪（gaze tracking），以提升虚拟现实中的用户体验。
+
+
+
+Antti Hirvonen目前在UL Benchmarks领导图形开发团队。2014年，他加入了UL，担任图形工程师一职。他在从事了多年其它软件领域的工作之后，开始对实时计算机图形学充满热情。这些年来，Antti为3DMark做出了巨大贡献，这是一款世界知名的游戏基准测试软件。他还为公司内部编写了相关的开发工具。他目前的主要兴趣包括现代图形引擎架构、实时全局光照等等。Antti拥有阿尔托大学计算机专业的硕士学位。
+
+
+
+Johannes Jendersie是德国克劳斯塔尔工业大学的一名在读博士生。他目前的研究主题是对蒙特卡洛光传输模拟中关于鲁棒性和并行化的改进。Johannes在2013年获得了马格德堡大学计算机科学专业的本科学位，在2014年获得了该校计算机图形学专业的硕士学位。
+
+
+
+Tero Karras是NVIDIA Research的一名首席科学家，他在2009年加入该机构。他目前的研究涉及深度学习、生成模型（generative models）和数字内容创作。他在NVIDIA实时光线追踪的研究中扮演着极为重要的角色，特别是关于构建高效加速结构和专用硬件单元这两个研究方向。
+
+
+
+Alexander Keller是NVIDIA的研究主任。在此之前，他是Mental Images的首席科学家，他在该公司主要负责对未来产品研究及战略规划，包括设计NVIDIA Iray光传输模拟和渲染系统。在踏入工业界之前，他是乌尔姆大学计算机图形学和科学计算专业的全职教授。他在任职期间，和别人共同创立了UZWR（乌尔姆科学计算中心）。同时，他还获得了卓越教育奖。Alexander Keller在光线追踪领域有着超过30年的行业经验，特别是在光传输模拟中开创性地应用了拟蒙特卡洛方法，打通了机器学习和渲染这两个领域。他拥有博士学位，有着超过30项专利授权，发表了50多篇学术论文。
+
+
+
+Patrick Kelly是Epic Games的资深渲染程序员，主要使用Unreal引擎从事光线追踪方面的工作。在此之前，Patrick耗费了近10年的时间，一直在研究离线渲染，曾在DreamWorks Animation、Weta Digital以及 Walt Disney Animation Studios等多家工作室工作过。他在2004年获得了德克萨斯大学阿灵顿分校计算机科学专业的学士学位，在2008年获得了犹他大学计算机专业的硕士学位。
+
+
+
+Hyuk Kim目前在韩国NEXON的devCAT工作室担任图形引擎开发工程师，参与了Dragon Hound游戏项目。先前，他曾受到了John Carmack的游戏Original Doom的鼓舞，励志成为一名游戏开发者。他在游戏领域主要关注实时计算机图形学。他拥有西江大学的硕士学位，研究方向是光线追踪。目前他主要研究离线到实时渲染的算法，比如光线追踪、全局光照和光子映射。
+
+
+
+Aaron Knoll是NVIDIA公司的一名开发技术支持工程师。他在2009年获得了犹他大学的博士学位。他曾在阿贡国家实验室、德州先进运算中心从事高性能计算机设施相关的工作。他的研究主要集中在超级计算机环境下大规模数据可视化中的光线追踪技术。他是OSPRay框架的早期使用者和贡献者。他目前使用NVIDIA OptiX实现光线追踪可视化。
+
+
+
+Samuli Laine是NIVDIA的一名首席科学家。他目前的研究方向是神经网络、计算机视觉和计算机图形学的交叉应用。早先，他主要研究高效GPU光线追踪、基于体素的几何表达以及各种计算真实光照的方法。他在2006年获得了赫尔辛基大学计算机科学专业的硕士和博士学位。
+
+
+
+Andrew Lauritzen是SEED的一名高级渲染工程师，他所在的是Electronic Arts旗下专门研究未来前沿技术和创新性实验的跨学科团队。在此之前，Andrew曾是Intel的Advanced Technology Group（ATG）的一员，主要工作是改进算法、API以及渲染所用的硬件。他在2008年获得了滑铁卢大学计算机科学的数学硕士学位，在校期间他主要研究方差阴影贴图以及其它阴影滤波（shadow filtering）算法。
+
+
+
+Nick Leaf是NVIDIA的一名软件工程师，同时还是加州大学戴维斯分校计算机科学专业的一名在读博士生。他主要研究大数据分析及可视化，特别是裸眼可视化（an eye toward in situ visualization）。Nick在2008年获得了威斯康星大学物理与计算机科学专业的学士学位。
+
+
+
+Pascal Lecocq在2017年加入Sony Picture Imageworks，是一名高级渲染工程师。他在2001年获得了巴黎马恩-拉瓦莱大学计算机科学专业的博士学位。在Imageworks工作之前，Pascal曾先后在Renault、STT Systems以及Technicolor公司工作过，主要从事实时渲染技术的研发工作，该技术主要用于驾驶模拟器、动作捕捉以及电影等领域。他主要研究的是实时阴影、面积光着色、体积（volumetrics）以及用于渲染的高效路径追踪技术。
+
+
+
+Edward Liu是NVIDIA Applied Deep Learning Research的一名高级研究员。他主要是研究深度学习、计算机图形学以及计算机视觉的交叉应用。在此之前，他还在Developer Technology和Real-Time Ray Tracing等NVIDIA的其他团队工作过，主要研发各种未来GPU架构的新功能，包括实时光线追踪，图像重建以及虚拟显示渲染。另外，他还耗费不少时间对GPU应用程序的性能进行优化。他业余时间喜欢旅游和风光摄影。
+
+
+
+Ignacio Llamas是NVIDIA的一名实时光线追踪软件的主管。他带领渲染工程师团队使用光线追踪进行实时渲染，并推动NVIDIA RTX走向技术巅峰。他在NVIDIA工作超过了10年，担任过多个职位，包括驱动开发、开发技术支持、科研以及GPU架构等职位。
+
+
+
+Adam Marrs是NVIDIA Game Engines and Core Technology团队的一名计算机科学家，从事游戏和电影相关的实时渲染技术的研究。他的工作经历包括商业游戏引擎开发、授权游戏、实时光线追踪以及图形学研究等内容。他拥有北卡罗来纳州立大学计算机科学的博士和硕士学位专业以及弗吉尼亚理工学院计算机科学专业的学士学位。
+
+
+
+Morgan McGuire是NVIDIA多伦多的一位杰出科学家。他主要研究的是全新用户体验的实时图形系统。Morgan是《The Graphics Codex, Computer Graphics: Principles and  Practice 》（第三版）以及《 Creating Games》的合著者。他在威廉斯学院、滑铁卢大学以及麦吉尔大学任教。更早之前，他主要从事Unity游戏和图形技术的开发，参与开发的游戏包括the Roblox、Skylanders、Titan  Quest、Call of Duty以及Marvel Ultimate Alliance系列。
+
+
+
+Peter Messmer是NVIDIA的一名首席工程师，负责高性能计算可视化团队。他主要专注于开发工具和方法学，可以让科学家使用GPU可视化技术来深入探究模拟仿真的结果。在加入NVIDIA之前，Peter曾开发和使用大规模并行仿真程序，用来研究等离子物理现象。Peter拥有瑞士联邦理工学院物理学的硕士和博士学位。
+
+
+
+Pierre Moreau是瑞典隆德大学计算机图形学团队的一名在读博士研究生。他还是NVIDIA隆德的一名实习研究员。他先后获得了雷恩大学计算机科学专业的学士学位以及波尔多大学计算机科学专业的硕士学位。他目前主要的研究方向是使用光线追踪或光子喷射（photon splatting）技术进行实时照片级渲染。工作之余，他喜欢欣赏和演奏音乐，同样还喜欢学习GPU硬件及其相关的编程技术。
+
+
+
+R. Keith Morley是NVIDIA的一名开发技术支持工程师，帮助核心合作伙伴在NVIDIA GPU上设计和实现基于光线追踪的解决方案。他的专业背景是基于物理的着色。在加入NVIDIA之前，他从事动画长片的相关工作。他是NVIDIA Optix光线追踪API最早的开发者之一。
+
+
+
+Jacob Munkberg是NVIDIA实时渲染研究团队的一名高级研究员。他目前主要研究的是关于计算机图形学的机器学习。在NVIDIA之前，他在Intel的Advanced Rendering Technology工作。他还和别人共同创办了Swiftfoot Graphics，剔除技术是这套图形系统的一大特色。Jacob先后获得了查尔姆斯理工大学工程物理专业的硕士学位以及隆德大学计算机科学专业的博士学位。
+
+
+
+Clemens Musterle是Enscape的一名渲染工程师，目前带领渲染团队。他在2015年获得了慕尼黑应用科技大学计算机科学专业的硕士学位，主要研究实时计算机图形学。在加入Enscape团队（2015年）之前，他曾在Dassault Systèmes的3DEXCITE团队工作过几年。
+
+
+
+Jim Nilsson拥有瑞典查尔姆斯理工大学计算机系统专业的博士学位。他在2016年10月加入了NVIDIA。在此之前，他曾在Intel的Advanced Rendering Technology团队工作过。
+
+
+
+Matt Pharr是NVIDIAD的一名研究员，主要研究光线追踪和实时渲染。他著有《Physically Based Rendering》一书，由于本书对电影工业带来了巨大影响，他与合著者在2014年获得了奥斯卡科学技术奖（Scientific and Technical Academy Award）。
+
+
+
+Matthias Raab在2007年加入了Mental Images（之后NVIDIA被收购，更名为NVIDIA ARC），他起初是一名渲染软件工程师，参与开发了著名的光线追踪系统Mental Ray。从NVIDIA Iray创立伊始，他就一直积极投身于这款基于GPU照片级渲染器的开发中，他的主要贡献是材质描述以及拟蒙特卡洛方法的光传输模拟技术。如今，他是NVIDIA的材质定义语言（Material Definition Language，即MDL）团队的一员。
+
+
+
+Alexander Reshetov拥有俄罗斯凯尔迪什应用数学研究所的博士学位。他在2014年1月加入了NVIDIA。在此之前，他在Intel实验室工作了17年，主要从事三维图形算法的研究以及应用程序的开发。他还在德州超导对撞实验室（Super-Conducting Super-Collider Laboratory）工作过2年，为加速器设计控制系统。
+
+
+
+Charles de Rousiers是Electronic Arts Frostbite引擎团队的一名渲染工程师。他主要从事光照、材质和后处理相关技术开发，同时还将基于物理渲染的理论引入引擎中。他在2011年获得了法国国家信息与自动化研究所（INRIA）计算机科学专业的博士学位。在此之前，他主要研究复杂材质真实渲染的技术。
+
+
+
+Rahul Sathe是NVIDIA的一名高级DevTech工程师。他目前的工作是帮助游戏开发者改进在GeForce显卡下的游戏体验，同时给未来新架构设计算法原型。在此之前，他曾在Intel的研发及产品团队担任过各种职务。他热衷于研究3D图形的各种技术以及相关硬件基础。他曾在克莱姆森大学以及孟买大学就学。工作之余，他喜欢跑步、骑行以及和亲朋好友分享美食。
+
+
+
+Daniel Seibert是NVIDIA柏林的一名高级图形软件工程师。自从2007年以来，他主要专职开发专业渲染器。他是拟蒙特卡洛方法和基于物理的光传输模拟研究领域的专家。Daniel为Mental Ray渲染器、NVIDIA Iray光传输模拟及渲染系统做出了贡献。同时，他还是MDL的设计者之一，MDL是NVIDIA推出的一种材质定义语言（Material Definition Language）。
+
+
+
+Atte Seppälä是UL Benchmarks的一名图形软件工程师。他拥有阿尔托大学计算机科学专业的理学硕士学位。他从2015年起加入UL Benchmarks，参与开发了3DMark和VRMark基准测试软件。
+
+
+
+Peter Shirley是NVIDIA的一名杰出科研人员。他曾和别人共同正式创立了两家软件公司，同时还是印第安纳大学、康奈尔大学以及犹他大学的教授和研究员。他在1985年获得了里德学院物理学专业的学士学位，随后在1991年获得了伊利诺伊大学计算机科学专业的博士学位。他是几本计算机图形学书以及多篇科技论文的合著者。他的专业领域主要包括交互式高动态范围成像、计算摄影学、真实感渲染、统计计算、可视化以及沉浸式系统等方面。
+
+
+
+Niklas Smal是UL Benchmarks的一名图形软件工程师。他在2015年加入该公司，已参与开发了3DMark和VRMark显卡基准测试软件。Niklas拥有计算机科学专业的理学学士学位，目前刚完成阿尔托大学理学硕士的学业。
+
+
+
+Josef Spjut是NVIDIA的一名科研人员，主要研究电子竞技、增强显示以及光线追踪等领域。在此之前，他是哈维玛德学院工程系的客座教授。他先后获得了加州大学河滨分校计算机工程专业的学士学位、犹他大学Hardware Ray Tracing组计算机工程专业的博士学位。
+
+
+
+Tomasz Stachowiak是一名软件工程师，热衷于发光像素（shiny pixels）和底层GPU黑客技术。他喜欢编译快、强类型的系统，以及各种折腾搞怪。
+
+
+
+Clifford Stein是Sony Pictures Imageworks的一名软件工程师。他主要专注于公司内部使用的Arnold渲染器的研发工作。由于他对Arnold的杰出贡献，他在2017年获得了奥斯卡科学与工程成就奖（Academy Scientific and Engineering Award）。在加入Sony之前，他在STMicroelectronics任职，参与了包括机器视觉和高级渲染架构在内的各种项目。他在劳伦斯利弗莫尔国家实验室期间，主要研究仿真可视化算法。Clifford拥有哈维玛德学院学士学位，以及加州大学戴维斯分校的硕士和博士学位。
+
+
+
+John E. Stone是贝克曼高等科学技术研究所理论与计算生物物理学组的高级研究程序员。同时，他还是伊利诺伊大学NVIDIA CUDA卓越中心的副主任。John主持开发了Visual Molecular Dynamics（VMD），这是一款高性能分子可视化工具软件，遍布全球的研究人员都在使用它。他的主要研究领域包括科学可视化、GPU计算、并行计算、光线追踪、力反馈以及虚拟环境。John在2010年获得了NVIDIA CUDA Fellow称号。他在2015年加入了Khronos Group Advisory Panel，参与Vulkan API的研发。由于对技术社区极具创新的领导贡献，他在2017年和2018年获得了IBM Champion for Power奖项。John还为许多项目提供咨询服务，包括计算机图形学、GPU计算以及高性能计算。他是ACM SIGGRAPH和IEEE的成员。
+
+
+
+Robert Toth是NVIDIA瑞典隆德的一名高级软件工程师，主要从事光线追踪驱动的开发工作。他在2008年获得了隆德大学工程物理学的硕士学位。Robert在Intel的 Advanced Research Technology团队工作了7年，主要为Larrabee项目以及集成显卡解决方案提供算法。他研究的算法主要包括随机光栅化方法、着色系统以及虚拟现实。
+
+
+
+Carsten Wächter把整个职业生涯都投入在光线追踪软件上，包括十年的Mental Ray以及Iray渲染器的开发。他在该领域拥有多项专利和发明。目前他在NVIDIA带领团队从事NVIDIA光线跟踪开发库相关的GPU加速工作。他在乌尔姆大学期间完成学位论文，研究主题是关于使用拟蒙特卡洛采样方法实现了对光传输的加速，同时为光线追踪提供了高效内存技术和高速算法，随后他获得了乌尔姆大学的博士学位。在业余时间，他爱好收藏弹球机，还开发了一个开源的弹球机仿真器。
+
+
+
+Ingo Wald是NVIDIA的一名光线追踪的主管。他先后获得了凯泽斯劳滕大学的硕士学位和萨尔大学的博士学位（都是和光线追踪相关的研究方向）。他随后在萨尔布吕肯的马克斯·普朗克研究所担任博士后，在犹他大学担任研究员，还在Intel担任技术主管，负责基于软件定义的渲染项目（主要是Embree和OSPRay）。Ingo合著撰写超过了75篇论文，拥有多项专利，并且参与了多个目前已广泛使用的光线追踪相关的软件项目。他的兴趣涉及高效高性能光线追踪所包含的几乎所有方面，从可视化到产品级渲染，从实时渲染到离线渲染，从硬件到软件。
+
+
+
+Graham Wihlidal是SEED的一名高级渲染工程师，所在的是一个跨学科团队，为Electronic Arts主攻尖端技术和创新性实验。在加入SEED之前，Graham在Frostbite渲染团队工作，主要是为许多热门游戏实现各种技术并提供支持服务，这些游戏包括Battlefield、Dragon Age: Inquisition、Plants vs.Zombies、FIFA、Star Wars: Battlefront等等。在Frostbite任职之前，他在BioWare担任了多年的高级工程师，发布了多款游戏，包括the Mass Effect、Dragon Age trilogies和Star Wars: The Old Republic。Graham还出版过作品，出席过许多会议。
+
+
+
+Thomas Willberger是Enscape的创始人兼CEO。Enscape提供全套流程的实时渲染解决方案，排名前100位的建筑公司中有超过80家使用了该公司的解决方案。他的研究主题包括图像过滤、体积（volumetrics）、机器学习以及基于物理的着色。他在2011年获得了卡尔斯鲁厄理工学院（KIT）机械工程专业的学士学位。
+
+
+
+Michael Wimmer目前是维也纳工业大学（TU）视觉计算与人本技术研究所（the Institute of Visual Computing and Human-Centered Technology）的一名副教授，他带领着Rendering and Modeling Group。他的学术生涯是从1997年维也纳工业大学开始的，他在2001年获得了该校的博士学位。他的研究主题包括实时渲染、计算机游戏、城市环境实时可视化、基于点的渲染、城市模型重建、程序建模（procedural modeling）以及形状建模（shape modeling）。他还在以上这些领域发表了超过130篇论文。他同时还是《Real-Time Shadows》的合著者。他常年担任行业重要会议的组委会成员，包括ACM SIGGRAPH、SIGGRAPH Asia、Eurographics、IEEE VR、EGSR、ACM I3D、SGP、SMI以及HPG等会议。他目前是IEEE Transactions的副主编，涉及的期刊有《Visualization and Computer Graphics》、《Computer Graphics Forum》以及《Computers & Graphics》。他曾是这些学术会议的联合主席：Eurographics Symposium on Rendering 2008、Pacific Graphics 2012、Eurographics 2015、Eurographics Workshop on Graphics and Cultural Heritage 2018。
+
+
+
+Chris Wyman是NVIDIA的一名首席研究员，主要研究全新光栅器的实时渲染算法、光线追踪以及混合技术。他几乎总能找到合适的技术或工具来处理问题，涉及深度学习、基于物理的光传输以及非常规方法处理光栅化问题（dirty raster hacks）。Chris拥有明尼苏达大学的学士学位以及犹他大学计算机科学专业的博士学位。他曾在爱荷华大学任教超过10年。
